@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+* {
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  * {
+    cursor: auto;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Custom cursor styles */
+.custom-cursor {
+  @apply fixed pointer-events-none z-[9999] rounded-full border-2 border-deep-black;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor.hovering {
+  @apply bg-white border-white;
+  transform: scale(2.5);
+}
+
+.cursor-dot {
+  @apply fixed pointer-events-none z-[10000] rounded-full bg-deep-black;
+  width: 6px;
+  height: 6px;
+  mix-blend-mode: difference;
+}
+
+/* Parallax background text */
+.parallax-text {
+  font-size: clamp(120px, 20vw, 300px);
+  @apply font-bold font-serif whitespace-nowrap absolute -left-[5%] select-none pointer-events-none;
+  color: rgba(0, 0, 0, 0.03);
+}
+
+/* Dark section */
+.dark-section {
+  @apply bg-deep-black text-off-white;
+}
+
+.dark-section .parallax-text {
+  color: rgba(255, 255, 255, 0.03);
+}
+
+/* Image hover effect */
+.image-card {
+  @apply overflow-hidden;
+}
+
+.image-card img {
+  @apply transition-transform duration-700;
+  transition-timing-function: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.image-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Form styles */
+.form-input {
+  @apply bg-transparent border-0 border-b border-white/20 py-4 w-full text-base outline-none transition-colors;
+}
+
+.form-input:focus {
+  @apply border-white;
+}
+
+.form-input::placeholder {
+  @apply text-white/40;
+}
+
+/* Number styling */
+.number-large {
+  font-size: clamp(60px, 10vw, 120px);
+  @apply font-bold font-serif leading-none opacity-10;
+}
+
+/* Selection color */
+::selection {
+  @apply bg-deep-black text-off-white;
+}
+
+.dark-section ::selection {
+  @apply bg-off-white text-deep-black;
+}
