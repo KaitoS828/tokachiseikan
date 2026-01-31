@@ -84,6 +84,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://tokachiseikan.vercel.app',
   },
+  verification: {
+    google: '58jKRGv7e9ttvsW0jJ8UW2gE-2T0uH8tYFLgVNy7VY4',
+  },
 }
 
 export const viewport: Viewport = {
