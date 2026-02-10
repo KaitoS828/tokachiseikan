@@ -7,9 +7,10 @@ interface MagneticButtonProps {
   children: ReactNode
   className?: string
   type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
 }
 
-export const MagneticButton = ({ children, className = '', type = 'button' }: MagneticButtonProps) => {
+export const MagneticButton = ({ children, className = '', type = 'button', disabled = false }: MagneticButtonProps) => {
   const ref = useRef<HTMLButtonElement>(null)
 
   const x = useMotionValue(0)
@@ -42,6 +43,7 @@ export const MagneticButton = ({ children, className = '', type = 'button' }: Ma
     <motion.button
       ref={ref}
       type={type}
+      disabled={disabled}
       className={`interactive ${className}`}
       style={{ x: springX, y: springY }}
       onMouseMove={handleMouseMove}
