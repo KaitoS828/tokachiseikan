@@ -17,11 +17,35 @@ export const Contact = () => {
     message: '',
   })
   const [focusedField, setFocusedField] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    alert('お問い合わせありがとうございます。\n内容を確認の上、ご連絡いたします。')
-    setFormData({ name: '', email: '', tel: '', message: '' })
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        alert('お問い合わせありがとうございます。\n内容を確認の上、ご連絡いたします。')
+        setFormData({ name: '', email: '', tel: '', message: '' })
+      } else {
+        alert('送信に失敗しました。\nもう一度お試しください。')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      alert('送信に失敗しました。\nもう一度お試しください。')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -150,15 +174,18 @@ export const Contact = () => {
 
             <MagneticButton
               type="submit"
-              className="w-full md:w-auto px-16 py-5 bg-white text-deep-black font-sans text-sm tracking-[0.2em] hover:bg-gray-200 transition-colors flex items-center justify-center gap-3 group"
+              disabled={isSubmitting}
+              className="w-full md:w-auto px-16 py-5 bg-white text-deep-black font-sans text-sm tracking-[0.2em] hover:bg-gray-200 transition-colors flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <span>送信する</span>
-              <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <Send size={16} />
-              </motion.span>
+              <span>{isSubmitting ? '送信中...' : '送信する'}</span>
+              {!isSubmitting && (
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <Send size={16} />
+                </motion.span>
+              )}
             </MagneticButton>
           </form>
         </RevealOnScroll>

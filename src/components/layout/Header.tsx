@@ -11,14 +11,14 @@ export const Header = () => {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-off-white/90 backdrop-blur-md py-4' : 'py-6'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white/95 backdrop-blur-md shadow-sm ${
+        isScrolled ? 'py-4' : 'py-6'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center border-b border-gray-200 pb-4">
         <a
           href="#"
           className="font-serif text-xl md:text-2xl tracking-wider interactive"
@@ -69,7 +69,7 @@ export const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-off-white"
+            className="md:hidden bg-white border-t border-gray-200"
           >
             <nav className="flex flex-col items-center py-8 gap-6">
               {navItems.map((item, i) => (

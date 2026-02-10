@@ -52,24 +52,22 @@ export const Works = () => {
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="aspect-[3/4] mb-6 relative overflow-hidden">
-                <ImageReveal className="w-full h-full" delay={0.3 + i * 0.15}>
-                  <motion.div
-                    className="relative w-full h-full"
-                    animate={{
-                      scale: hoveredIndex === i ? 1.1 : 1,
-                    }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Image
-                      src={work.image}
-                      alt={work.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                  </motion.div>
-                </ImageReveal>
+              <div className="aspect-[3/4] mb-6 relative overflow-hidden bg-gray-100">
+                <motion.div
+                  className="relative w-full h-full"
+                  animate={{
+                    scale: hoveredIndex === i ? 1.1 : 1,
+                  }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Image
+                    src={work.image}
+                    alt={work.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </motion.div>
 
                 <motion.div
                   className="absolute inset-0 bg-deep-black/60 flex items-end p-6"

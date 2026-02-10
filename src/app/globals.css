@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 /* Base styles */
-* {
+/* カスタムカーソルを使用する場合は以下のコメントアウトを解除 */
+/* * {
   cursor: none;
 }
 
@@ -11,7 +12,7 @@
   * {
     cursor: auto;
   }
-}
+} */
 
 html {
   scroll-behavior: smooth;

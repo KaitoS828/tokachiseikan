@@ -163,7 +163,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
       </head>
-      <body className="bg-off-white font-sans antialiased">{children}</body>
+      <body className="bg-off-white font-sans antialiased" suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   )
 }

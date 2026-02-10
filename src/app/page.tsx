@@ -11,7 +11,6 @@ import { Works } from '@/components/sections/Works'
 import { Challenge } from '@/components/sections/Challenge'
 import { Company } from '@/components/sections/Company'
 import { Contact } from '@/components/sections/Contact'
-import { CustomCursor } from '@/components/common/CustomCursor'
 import { ScrollProgress } from '@/components/common/ScrollProgress'
 import { LoadingScreen } from '@/components/common/LoadingScreen'
 
@@ -35,7 +34,6 @@ export default function HomePage() {
 
       {!isLoading && (
         <>
-          <CustomCursor />
           <ScrollProgress />
           <Header />
           <main>

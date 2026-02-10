@@ -53,7 +53,7 @@ export const Strength = () => {
           className="font-serif text-3xl md:text-5xl lg:text-6xl leading-tight mb-20"
           delay={0.2}
         >
-          {`他社が真似できない\n3つの強み`}
+          {`当社の\n３つの強み`}
         </TextReveal>
 
         <div className="space-y-0">
